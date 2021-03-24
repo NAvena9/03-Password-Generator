@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();    //// I STILL NEED TO DEFINE THIS**********
+  var password = generatePassword();    
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 
@@ -54,24 +54,33 @@ function generatePassword(){
   
 
   //Define an empty array that will store the password characters if the conditions are true
+  //with individual pushs was basically adding the entire array of data (looks like its working them as a hole and I thought it was going to be as an object)
   var passwordArray= [];
 
   if (includeLowerCase){
-    passwordArray.push(lowerCase);
+    for (var i = 0; i <= lowerCase.length; i++){   //// this individual loop worked (thanks god for tdebuging on chrome), add it to the entire conditions to see how it behaves
+        passwordArray.push(lowerCase[i]);
+    }
   }
 
   if (includeUpperCase){
-    passwordArray.push(upperCase);
+    for (var i = 0; i <= upperCase.length; i++){
+      passwordArray.push(upperCase[i]);
+    }
   }
 
   if (includeNumbers){
-    passwordArray.push(incNumbers);
+    for (var i = 0; i <= incNumbers.length; i++){
+      passwordArray.push(incNumbers[i]);
+    }
   }
 
   if (includeSymbols){
-    passwordArray.push(incSymbols);
+    for (var i = 0; i <= incSymbols.length; i++){
+      passwordArray.push(incSymbols[i]);
+    }
   } 
-//LOOPPP RRRRRRRRRFGFFFF$$$$$     ^^^^^^^     (((((((((9999999999)))))))))
+//This Loop takes the length of my user input password lenght to add a character randomly from the created array.
   var newPassword = '';
 
 for (var i=0; i <= passLenght; i++){

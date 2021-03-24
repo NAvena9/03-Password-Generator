@@ -1,81 +1,87 @@
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();    //// I STILL NEED TO DEFINE THIS**********
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
 
-// }
+}
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 
-// ///variable expression that generates the password 
+///variable expression that generates the password 
 // const passwordGen = createPassword(selectLenght, includeLowerCase, includeUpperCase, includeNumbers, includeSymbols);
 
-//NUEVO..
-//User input variables, here Im assigning the values direct from the ASCI table ID
-var PassLenght;
-var passwordArray=[];
+
+// User input variables, here Im assigning the values 
+
+
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","W","X","Y","Z"];
-var includeNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var includeSymbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+var incNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var incSymbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
-//defining the generate password function
+//DEFINING the generate password function
 function generatePassword(){
   var passwordString='';
 
-  //Declare the inputs from user to get booleans with 'confirm'
+//defining passlenght function expression and creating the conditional for the leght.
+  let passLenght = parseInt(prompt('How long do you want the password to be? The password needs to be at least 8 characters and no more than 128.'));
+  if (passLenght <8){
+      alert ('The password needs to be at least 8 characters. Try again!');
+      return;
+    }
+  if (passLenght > 128){
+      alert('The password needs to be less than 128 characters. Try again!');
+      return;
+    }
   
-  var includeLowerCase=confirm('Do you want the password to include lowercase letters?');
-  var includeUpperCase=confirm('Do you want the password to include uppercase letters?');
-  var includeNumbers=confirm('Do you want the password to include numbers?');
-  var includeSymbols=confirm('Do you want the password to include special-characters/symbols?');
+  //Declare the inputs from user to get booleans with 'confirm' 
+  var includeLowerCase = confirm('Click Ok if you want the password to include lowercase letters?');
+  var includeUpperCase = confirm('Click Ok if  you want the password to include uppercase letters?');
+  var includeNumbers = confirm('Click Ok if you want the password to include numbers?');
+  var includeSymbols = confirm('Click Ok if  you want the password to include special-characters/symbols?');
 
   //Loop to verify the password lenght
-  passLenght = parseInt(prompt('How long do you want the password to be? The password needs to be at least 8 characters and no more than 128.'));
-  while (passLenght < 8 || passLenght > 128 || typeof(passLenght) != 'number' || passLenght === null){
-    alert ('Input a password lenght. The password needs to be between 8 and 128 characters');
+      while (includeLowerCase === false && includeUpperCase === false && includeNumbers === false && includeSymbols === false){
+    alert('At least one character type should be selected'); 
+    return;
+  }
+  
+
+  //Define an empty array that will store the password characters if the conditions are true
+  var passwordArray= [];
+
+  if (includeLowerCase){
+    passwordArray.push(lowerCase);
   }
 
-
+  if (includeUpperCase){
+    passwordArray.push(upperCase);
   }
 
+  if (includeNumbers){
+    passwordArray.push(incNumbers);
+  }
+
+  if (includeSymbols){
+    passwordArray.push(incSymbols);
+  } 
+//LOOPPP RRRRRRRRRFGFFFF$$$$$     ^^^^^^^     (((((((((9999999999)))))))))
+  var newPassword = '';
+
+for (var i=0; i <= passLenght; i++){
+      newPassword = newPassword + passwordArray[Math.floor(Math.random() * passwordArray.length)];
+  }
+  return newPassword;
+}
 
 
 
-
-
-
-
-
-
-// var selectLenght = prompt('Select a lenght between 8 and 128 characters inclusive');
-// var includeLowerCase = prompt('Include Lowercase? ');
-// var includeUpperCase = prompt('Include Uppercase? ');
-// var includeNumbers = prompt('Include Numbers?');
-// var includeSymbols = prompt('include Special Characters?')
-
-
-
-// const LOWERCASE_CHAR_CODE = arrayLowtoHigh (65, 90);
-// const UPPERCASE_CHAR_CODE = arrayLowtoHigh (97, 122);
-// const NUMBERS_CHAR_CODE = arrayLowtoHigh (48, 57);
-// const SYMBOL_CHAR_CODE = arrayLowtoHigh (33, 47).concat(arrayLowtoHigh (58, 64)).concat (arrayLowtoHigh (91, 96)).concat(arrayLowtoHigh (123, 126));
-
-
-
-// function arrayLowtoHigh (low, high){
-//   const array = []
-//   for (var i= low; i <= hight; i++){
-//     array.push(i);
-//   }
-//   return array;
-// }
 
 
 

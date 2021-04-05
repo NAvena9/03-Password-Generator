@@ -19,11 +19,11 @@ generateBtn.addEventListener("click", writePassword);
 
 // User input variables, here Im assigning the values 
 
-
-var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","W","X","Y","Z"];
-var incNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-var incSymbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+let passwordArray = [];
+let lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+let upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","W","X","Y","Z"];
+let incNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let incSymbols = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", " < ", "=", " > ", " ? ", "@", "[", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
 
 //DEFINING the generate password function
 function generatePassword(){
@@ -55,28 +55,28 @@ function generatePassword(){
 
   //Define an empty array that will store the password characters if the conditions are true
   //with individual pushs was basically adding the entire array of data (looks like its working them as a hole and I thought it was going to be as an object)
-  var passwordArray= [];
+  
 
   if (includeLowerCase){
-    for (var i = 0; i <= lowerCase.length; i++){   //// this individual loop worked (thanks god for tdebuging on chrome), add it to the entire conditions to see how it behaves
+    for (let i = 0; i < lowerCase.length; i++){   //// this individual loop worked (thanks god for tdebuging on chrome), add it to the entire conditions to see how it behaves
         passwordArray.push(lowerCase[i]);
     }
   }
 
   if (includeUpperCase){
-    for (var i = 0; i <= upperCase.length; i++){
+    for (let i = 0; i < upperCase.length; i++){
       passwordArray.push(upperCase[i]);
     }
   }
 
   if (includeNumbers){
-    for (var i = 0; i <= incNumbers.length; i++){
+    for (let i = 0; i < incNumbers.length; i++){
       passwordArray.push(incNumbers[i]);
     }
   }
 
   if (includeSymbols){
-    for (var i = 0; i <= incSymbols.length; i++){
+    for (let i = 0; i < incSymbols.length; i++){
       passwordArray.push(incSymbols[i]);
     }
   } 
